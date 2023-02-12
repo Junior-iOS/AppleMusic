@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import AVFoundation
 
 class AppleMusicTableViewCell: UITableViewCell {
 
@@ -55,6 +56,9 @@ class AppleMusicTableViewCell: UITableViewCell {
         stack.distribution = .fillProportionally
         return stack
     }()
+    
+    let player = AVQueuePlayer()
+    private var songPreview = ""
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -117,8 +121,11 @@ class AppleMusicTableViewCell: UITableViewCell {
               let artwork = track.artworkUrl,
               let currency = track.currency,
               let price = track.trackPrice,
-              let releaseDate = track.releaseDate
+              let releaseDate = track.releaseDate,
+              let trackPreview = track.previewUrl
         else { return }
+        
+        self.songPreview = trackPreview
         
         DispatchQueue.main.async {
             self.imgTrackCover.sd_setImage(with: URL(string: artwork))
@@ -129,7 +136,8 @@ class AppleMusicTableViewCell: UITableViewCell {
     }
     
     @objc private func didTapPlaySongButton() {
-        print("didTapPlaySongButton")
+        if let url = URL(string: songPreview) {
+            UIApplication.shared.open(url)
+        }
     }
-
 }

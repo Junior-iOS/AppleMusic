@@ -30,6 +30,7 @@ class AppleMusicViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         title = Bundle.main.appName
+        appleMusicView.delegate = self
     }
     
     private func setupNavigation() {
@@ -55,6 +56,24 @@ class AppleMusicViewController: UIViewController {
         ])
     }
     
+    private func presentItunesViewController(with url: URL) {
+        let vc = iTunesViewController()
+        vc.songPreview = url
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}
+
+extension AppleMusicViewController: AppleMusicViewDelegate {
+    func didSelect(from appleMusicView: AppleMusicView, didSelectURL url: URL) {
+        presentItunesViewController(with: url)
+    }
+    
+    func didSelectArtist(from appleMusicView: AppleMusicView, didSelectArtist url: String) {
+        guard let url = URL(string: url) else { return }
+        presentItunesViewController(with: url)
+    }
 }
 
 // MARK: - SEARCH RESULTS UPDATING
@@ -63,7 +82,6 @@ extension AppleMusicViewController: UISearchResultsUpdating, UISearchBarDelegate
         let searchBar = searchController.searchBar
         guard let query = searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             appleMusicView.viewModel.clearView()
-            print("Cleared view")
             return
         }
         appleMusicView.band = query

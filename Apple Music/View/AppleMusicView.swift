@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+protocol AppleMusicViewDelegate: AnyObject {
+    func didSelect(from appleMusicView: AppleMusicView, didSelectURL url: URL)
+    func didSelectArtist(from appleMusicView: AppleMusicView, didSelectArtist url: String)
+}
+
 final class AppleMusicView: UIView {
     
     private let contentView: UIView = {
@@ -49,6 +54,7 @@ final class AppleMusicView: UIView {
     private let screen = UIScreen.main.bounds
     public var band = ""
     public var viewModel = AppleMusicViewModel()
+    weak var delegate: AppleMusicViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,5 +118,13 @@ extension AppleMusicView: AppleMusicViewModelDelegate {
         UIView.animate(withDuration: 0.3) {
             self.tableView.alpha = 0
         }
+    }
+    
+    func didSelectSongFrom(_ url: URL) {
+        delegate?.didSelect(from: self, didSelectURL: url)
+    }
+    
+    func didSelectArtistFrom(_ artistView: String) {
+        delegate?.didSelectArtist(from: self, didSelectArtist: artistView)
     }
 }

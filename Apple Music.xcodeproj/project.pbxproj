@@ -24,6 +24,7 @@
 		144947B7299953B4004BA665 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B6299953B4004BA665 /* Extension+UITableView.swift */; };
 		144947B9299953E6004BA665 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B8299953E6004BA665 /* Extension+UIViewController.swift */; };
 		144947BC29995C1F004BA665 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 144947BB29995C1F004BA665 /* SDWebImage */; };
+		144947BE29997A0B004BA665 /* iTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947BD29997A0B004BA665 /* iTunesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		144947B429995322004BA665 /* AppleMusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicTableViewCell.swift; sourceTree = "<group>"; };
 		144947B6299953B4004BA665 /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
 		144947B8299953E6004BA665 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		144947BD29997A0B004BA665 /* iTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				1449478D299883E9004BA665 /* AppleMusicViewController.swift */,
+				144947BD29997A0B004BA665 /* iTunesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144947BE29997A0B004BA665 /* iTunesViewController.swift in Sources */,
 				144947B7299953B4004BA665 /* Extension+UITableView.swift in Sources */,
 				144947AF2998A623004BA665 /* AppleMusicView.swift in Sources */,
 				1449478E299883E9004BA665 /* AppleMusicViewController.swift in Sources */,

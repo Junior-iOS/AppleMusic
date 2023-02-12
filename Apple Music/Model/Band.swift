@@ -24,6 +24,7 @@ struct Track: Codable {
     let trackName: String?
     let artistViewUrl: String?
     let previewUrl: String?
+    let collectionViewUrl: String?
     let artworkUrl: String?
     let trackPrice: Double?
     let releaseDate: String?
@@ -33,6 +34,7 @@ struct Track: Codable {
         case trackId
         case trackName
         case artistViewUrl
+        case collectionViewUrl
         case previewUrl
         case artworkUrl = "artworkUrl100"
         case trackPrice

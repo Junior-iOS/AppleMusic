@@ -10,8 +10,10 @@ import UIKit
 
 protocol AppleMusicViewModelDelegate: AnyObject {
     func didLoadList()
-//    func didNotLoadList(_ error: NetworkError)
+    //    func didNotLoadList(_ error: NetworkError)
     func didClearView()
+    func didSelectSongFrom(_ url: URL)
+    func didSelectArtistFrom(_ artistView: String)
 }
 
 final class AppleMusicViewModel: NSObject {
@@ -54,13 +56,13 @@ extension AppleMusicViewModel: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let response = self.bandResponse?.tracks?.compactMap({ return $0 })
-        guard let artistViewUrl = response?[indexPath.row].artistViewUrl else { return }
+        guard let collectionViewUrl = response?[indexPath.row].collectionViewUrl,
+              let url = URL(string: collectionViewUrl)
+        else { return }
         
-        if let url = URL(string: artistViewUrl) {
-            UIApplication.shared.open(url)
+        DispatchQueue.main.async {
+            self.delegate?.didSelectSongFrom(url)
         }
-        
-//        service.fetchData(.lookUpSong(for: trackId), completion: <#T##(Result<Band.Response, NetworkError>) -> Void#>)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,5 +81,20 @@ extension AppleMusicViewModel: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: " iTunes") { [weak self] _, _, _ in
+            guard let self = self else { return }
+            let track = self.bandResponse?.tracks?.compactMap({ return $0 })
+            
+            if let artistView = track?[indexPath.row].artistViewUrl {
+                DispatchQueue.main.async {
+                    self.delegate?.didSelectArtistFrom(artistView)
+                }
+            }
+        }
+        let swipeAction = UISwipeActionsConfiguration(actions: [action])
+        return swipeAction
     }
 }
