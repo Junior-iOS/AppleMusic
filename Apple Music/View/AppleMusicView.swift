@@ -42,6 +42,7 @@ final class AppleMusicView: UIView {
         let table = UITableView(frame: .zero)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.alpha = 0
+        table.register(cellClass: AppleMusicTableViewCell.self)
         return table
     }()
     
@@ -82,7 +83,7 @@ final class AppleMusicView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: screen.width - 40),
             imageView.heightAnchor.constraint(equalToConstant: 200),

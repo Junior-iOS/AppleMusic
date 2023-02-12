@@ -20,6 +20,10 @@
 		144947AF2998A623004BA665 /* AppleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947AE2998A623004BA665 /* AppleMusicView.swift */; };
 		144947B12998AB9D004BA665 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B02998AB9D004BA665 /* Extension+View.swift */; };
 		144947B32998AEA6004BA665 /* AppleMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B22998AEA6004BA665 /* AppleMusicViewModel.swift */; };
+		144947B529995322004BA665 /* AppleMusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B429995322004BA665 /* AppleMusicTableViewCell.swift */; };
+		144947B7299953B4004BA665 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B6299953B4004BA665 /* Extension+UITableView.swift */; };
+		144947B9299953E6004BA665 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B8299953E6004BA665 /* Extension+UIViewController.swift */; };
+		144947BC29995C1F004BA665 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 144947BB29995C1F004BA665 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,9 @@
 		144947AE2998A623004BA665 /* AppleMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicView.swift; sourceTree = "<group>"; };
 		144947B02998AB9D004BA665 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		144947B22998AEA6004BA665 /* AppleMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicViewModel.swift; sourceTree = "<group>"; };
+		144947B429995322004BA665 /* AppleMusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicTableViewCell.swift; sourceTree = "<group>"; };
+		144947B6299953B4004BA665 /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
+		144947B8299953E6004BA665 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144947BC29995C1F004BA665 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				144947AE2998A623004BA665 /* AppleMusicView.swift */,
+				144947B429995322004BA665 /* AppleMusicTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,6 +149,8 @@
 			children = (
 				144947AA29988838004BA665 /* Extension+Bundle.swift */,
 				144947B02998AB9D004BA665 /* Extension+View.swift */,
+				144947B6299953B4004BA665 /* Extension+UITableView.swift */,
+				144947B8299953E6004BA665 /* Extension+UIViewController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -160,6 +171,9 @@
 			dependencies = (
 			);
 			name = "Apple Music";
+			packageProductDependencies = (
+				144947BB29995C1F004BA665 /* SDWebImage */,
+			);
 			productName = "Apple Music";
 			productReference = 14494786299883E9004BA665 /* Apple Music.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +202,9 @@
 				Base,
 			);
 			mainGroup = 1449477D299883E9004BA665;
+			packageReferences = (
+				144947BA29995C1F004BA665 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 14494787299883E9004BA665 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -214,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144947B7299953B4004BA665 /* Extension+UITableView.swift in Sources */,
 				144947AF2998A623004BA665 /* AppleMusicView.swift in Sources */,
 				1449478E299883E9004BA665 /* AppleMusicViewController.swift in Sources */,
 				144947B12998AB9D004BA665 /* Extension+View.swift in Sources */,
@@ -221,9 +239,11 @@
 				144947AD29988EDE004BA665 /* Band.swift in Sources */,
 				1449478A299883E9004BA665 /* AppDelegate.swift in Sources */,
 				1449478C299883E9004BA665 /* SceneDelegate.swift in Sources */,
+				144947B9299953E6004BA665 /* Extension+UIViewController.swift in Sources */,
 				144947A3299884AC004BA665 /* Request.swift in Sources */,
 				144947A2299884AC004BA665 /* NetworkError.swift in Sources */,
 				144947B32998AEA6004BA665 /* AppleMusicViewModel.swift in Sources */,
+				144947B529995322004BA665 /* AppleMusicTableViewCell.swift in Sources */,
 				144947AB29988838004BA665 /* Extension+Bundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +458,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		144947BA29995C1F004BA665 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		144947BB29995C1F004BA665 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 144947BA29995C1F004BA665 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1449477E299883E9004BA665 /* Project object */;
 }

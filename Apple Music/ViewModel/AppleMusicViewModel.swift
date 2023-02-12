@@ -51,7 +51,16 @@ final class AppleMusicViewModel: NSObject {
 
 extension AppleMusicViewModel: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
+        let response = self.bandResponse?.tracks?.compactMap({ return $0 })
+        guard let artistViewUrl = response?[indexPath.row].artistViewUrl else { return }
+        
+        if let url = URL(string: artistViewUrl) {
+            UIApplication.shared.open(url)
+        }
+        
+//        service.fetchData(.lookUpSong(for: trackId), completion: <#T##(Result<Band.Response, NetworkError>) -> Void#>)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,15 +68,16 @@ extension AppleMusicViewModel: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        let response = bandResponse?.tracks?.compactMap({ return $0 })
-        
-        guard let tracks = response else { return UITableViewCell() }
-        
-        DispatchQueue.main.async {
-            cell.textLabel?.text = tracks[indexPath.row].trackName
-            cell.detailTextLabel?.text = "\(String(describing: tracks[indexPath.row].trackId))"
+        return tableView.dequeueReusableCell(of: AppleMusicTableViewCell.self, for: indexPath) { [weak self] cell in
+            guard let self = self else { return }
+            
+            let response = self.bandResponse?.tracks?.compactMap({ return $0 })
+            guard let track = response?[indexPath.row] else { return }
+            cell.configure(track: track)
         }
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

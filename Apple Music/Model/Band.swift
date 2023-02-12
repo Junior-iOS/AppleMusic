@@ -27,6 +27,7 @@ struct Track: Codable {
     let artworkUrl: String?
     let trackPrice: Double?
     let releaseDate: String?
+    let currency: String?
     
     enum CodingKeys: String, CodingKey {
         case trackId
@@ -36,5 +37,6 @@ struct Track: Codable {
         case artworkUrl = "artworkUrl100"
         case trackPrice
         case releaseDate
+        case currency
     }
 }
