@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 protocol AppleMusicViewModelDelegate: AnyObject {
-//    func didSelectCoin(_ coin: Bitcoin)
     func didLoadList()
 //    func didNotLoadList(_ error: NetworkError)
+    func didClearView()
 }
 
 final class AppleMusicViewModel: NSObject {
@@ -39,6 +39,12 @@ final class AppleMusicViewModel: NSObject {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    public func clearView() {
+        DispatchQueue.main.async {
+            self.delegate?.didClearView()
         }
     }
 }

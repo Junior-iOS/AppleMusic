@@ -40,7 +40,7 @@ class AppleMusicViewController: UIViewController {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = .systemCyan
     }
     
     private func setupConstraints() {
@@ -61,7 +61,11 @@ class AppleMusicViewController: UIViewController {
 extension AppleMusicViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        guard let query = searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty  else { return }
+        guard let query = searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            appleMusicView.viewModel.clearView()
+            print("Cleared view")
+            return
+        }
         appleMusicView.band = query
     }
     
