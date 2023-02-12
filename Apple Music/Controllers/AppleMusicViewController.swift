@@ -11,10 +11,11 @@ class AppleMusicViewController: UIViewController {
     
     private let appleMusicView = AppleMusicView()
     
-    private let searchController: UISearchController = {
+    private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.searchBarStyle = .minimal
         searchController.searchBar.placeholder = "Search your content"
+        searchController.searchBar.delegate = self
         return searchController
     }()
     
@@ -26,25 +27,20 @@ class AppleMusicViewController: UIViewController {
         setupConstraints()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        appleMusicView.frame = view.bounds
-    }
-    
     private func setupView() {
         view.backgroundColor = .systemBackground
         title = Bundle.main.appName
     }
     
     private func setupNavigation() {
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.tintColor = .white
-        
-        searchController.searchResultsUpdater = self
-        navigationItem.searchController = searchController
     }
     
     private func setupConstraints() {
@@ -62,35 +58,24 @@ class AppleMusicViewController: UIViewController {
 }
 
 // MARK: - SEARCH RESULTS UPDATING
-extension AppleMusicViewController: UISearchResultsUpdating {
+extension AppleMusicViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-//        let searchBar = searchController.searchBar
-//
-//        guard let query = searchBar.text,
-//              !query.trimmingCharacters(in: .whitespaces).isEmpty,
-//              query.trimmingCharacters(in: .whitespaces).count >= 3,
-//              let resultsController = searchController.searchResultsController as? SearchResultsViewController else { return }
-//        resultsController.delegate = self
-//
-//        APICaller.shared.search(with: query) { result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let titles):
-//                    resultsController.titles = titles
-//                    resultsController.collectionView.reloadData()
-//
-//                case .failure(let error):
-//                    self.showMessage(withTitle: "Ops!", message: error.localizedDescription)
-//                }
-//            }
-//        }
+        let searchBar = searchController.searchBar
+        guard let query = searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty  else { return }
+        appleMusicView.band = query
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchBarText = searchBar.text else { return }
+        appleMusicView.viewModel.fetchBand(searchBarText)
+        searchBar.resignFirstResponder()
     }
     
     func didTapItem() {
-//        DispatchQueue.main.async { [weak self] in
-//            let vc = PreviewViewController()
-//            vc.configure(with: viewModel)
-//            self?.navigationController?.present(vc, animated: true)
-//        }
+        //        DispatchQueue.main.async { [weak self] in
+        //            let vc = PreviewViewController()
+        //            vc.configure(with: viewModel)
+        //            self?.navigationController?.present(vc, animated: true)
+        //        }
     }
 }

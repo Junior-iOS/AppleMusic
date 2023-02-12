@@ -19,6 +19,7 @@
 		144947AD29988EDE004BA665 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947AC29988EDE004BA665 /* Band.swift */; };
 		144947AF2998A623004BA665 /* AppleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947AE2998A623004BA665 /* AppleMusicView.swift */; };
 		144947B12998AB9D004BA665 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B02998AB9D004BA665 /* Extension+View.swift */; };
+		144947B32998AEA6004BA665 /* AppleMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B22998AEA6004BA665 /* AppleMusicViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		144947AC29988EDE004BA665 /* Band.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 		144947AE2998A623004BA665 /* AppleMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicView.swift; sourceTree = "<group>"; };
 		144947B02998AB9D004BA665 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
+		144947B22998AEA6004BA665 /* AppleMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		144947A6299884D0004BA665 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				144947B22998AEA6004BA665 /* AppleMusicViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				1449478C299883E9004BA665 /* SceneDelegate.swift in Sources */,
 				144947A3299884AC004BA665 /* Request.swift in Sources */,
 				144947A2299884AC004BA665 /* NetworkError.swift in Sources */,
+				144947B32998AEA6004BA665 /* AppleMusicViewModel.swift in Sources */,
 				144947AB29988838004BA665 /* Extension+Bundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
