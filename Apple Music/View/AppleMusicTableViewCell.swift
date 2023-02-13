@@ -119,6 +119,7 @@ class AppleMusicTableViewCell: UITableViewCell {
     func configure(track: Track?) {
         guard let track = track,
               let artwork = track.artworkUrl,
+              let trackName = track.trackName,
               let currency = track.currency,
               let price = track.trackPrice,
               let releaseDate = track.releaseDate,
@@ -129,9 +130,9 @@ class AppleMusicTableViewCell: UITableViewCell {
         
         DispatchQueue.main.async {
             self.imgTrackCover.sd_setImage(with: URL(string: artwork))
-            self.trackNameLabel.text = track.trackName
+            self.trackNameLabel.text = trackName
             self.trackPriceLabel.text = "\(String(describing: currency)) \(String(describing: price))"
-            self.releaseDateLabel.text = "Lançado em \(String(describing: releaseDate))"
+            self.releaseDateLabel.text = "Lançado em \(releaseDate.getFormattedDate())"
         }
     }
     

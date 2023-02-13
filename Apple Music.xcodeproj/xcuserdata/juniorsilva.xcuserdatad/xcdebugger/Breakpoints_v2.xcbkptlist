@@ -14,9 +14,25 @@
             filePath = "Apple Music/View/AppleMusicTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "didTapPlaySongButton()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "852A74B6-DA7F-46EE-9B3C-9D8EF21B8702"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Apple Music/View/AppleMusicTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "configure(track:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

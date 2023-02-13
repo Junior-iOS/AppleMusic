@@ -25,6 +25,7 @@
 		144947B9299953E6004BA665 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947B8299953E6004BA665 /* Extension+UIViewController.swift */; };
 		144947BC29995C1F004BA665 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 144947BB29995C1F004BA665 /* SDWebImage */; };
 		144947BE29997A0B004BA665 /* iTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947BD29997A0B004BA665 /* iTunesViewController.swift */; };
+		144947C02999F95C004BA665 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144947BF2999F95C004BA665 /* Extension+Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		144947B6299953B4004BA665 /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
 		144947B8299953E6004BA665 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		144947BD29997A0B004BA665 /* iTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewController.swift; sourceTree = "<group>"; };
+		144947BF2999F95C004BA665 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				144947B02998AB9D004BA665 /* Extension+View.swift */,
 				144947B6299953B4004BA665 /* Extension+UITableView.swift */,
 				144947B8299953E6004BA665 /* Extension+UIViewController.swift */,
+				144947BF2999F95C004BA665 /* Extension+Date.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				144947AF2998A623004BA665 /* AppleMusicView.swift in Sources */,
 				1449478E299883E9004BA665 /* AppleMusicViewController.swift in Sources */,
 				144947B12998AB9D004BA665 /* Extension+View.swift in Sources */,
+				144947C02999F95C004BA665 /* Extension+Date.swift in Sources */,
 				144947A1299884AC004BA665 /* NetworkProvider.swift in Sources */,
 				144947AD29988EDE004BA665 /* Band.swift in Sources */,
 				1449478A299883E9004BA665 /* AppDelegate.swift in Sources */,

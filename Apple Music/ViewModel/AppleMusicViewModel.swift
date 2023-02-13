@@ -84,7 +84,7 @@ extension AppleMusicViewModel: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: " iTunes") { [weak self] _, _, _ in
+        let action = UIContextualAction(style: .normal, title: " Music") { [weak self] _, _, _ in
             guard let self = self else { return }
             let track = self.bandResponse?.tracks?.compactMap({ return $0 })
             
