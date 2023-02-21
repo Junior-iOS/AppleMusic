@@ -67,11 +67,25 @@ class AppleMusicViewController: UIViewController {
 
 extension AppleMusicViewController: AppleMusicViewDelegate {
     func didSelect(from appleMusicView: AppleMusicView, didSelectURL url: URL) {
-        presentItunesViewController(with: url)
+        
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        } else {
+            presentItunesViewController(with: url)
+        }
     }
     
     func didSelectArtist(from appleMusicView: AppleMusicView, didSelectArtist url: String) {
         guard let url = URL(string: url) else { return }
+        
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        } else {
+            presentItunesViewController(with: url)
+        }
+    }
+    
+    func didSelectSong(from appleMusicView: AppleMusicView, didSelectSongFrom url: URL) {
         presentItunesViewController(with: url)
     }
 }

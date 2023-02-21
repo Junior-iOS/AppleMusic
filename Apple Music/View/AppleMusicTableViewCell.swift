@@ -9,6 +9,10 @@ import UIKit
 import SDWebImage
 import AVFoundation
 
+protocol AppleMusicTableViewCellDelegate: AnyObject {
+    func didPlaySong(with url: URL)
+}
+
 class AppleMusicTableViewCell: UITableViewCell {
 
     private let imgTrackCover: UIImageView = {
@@ -57,7 +61,8 @@ class AppleMusicTableViewCell: UITableViewCell {
         return stack
     }()
     
-    let player = AVQueuePlayer()
+    weak var delegate: AppleMusicTableViewCellDelegate?
+    private var player = AVAudioPlayer()
     private var songPreview = ""
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -138,7 +143,7 @@ class AppleMusicTableViewCell: UITableViewCell {
     
     @objc private func didTapPlaySongButton() {
         if let url = URL(string: songPreview) {
-            UIApplication.shared.open(url)
+            delegate?.didPlaySong(with: url)
         }
     }
 }

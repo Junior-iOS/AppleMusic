@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Band {
+enum Band: CaseIterable {
     struct Response: Codable {
         let count: Int?
         let tracks: [Track]?

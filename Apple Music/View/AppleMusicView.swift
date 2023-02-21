@@ -11,6 +11,7 @@ import UIKit
 protocol AppleMusicViewDelegate: AnyObject {
     func didSelect(from appleMusicView: AppleMusicView, didSelectURL url: URL)
     func didSelectArtist(from appleMusicView: AppleMusicView, didSelectArtist url: String)
+    func didSelectSong(from appleMusicView: AppleMusicView, didSelectSongFrom url: URL)
 }
 
 final class AppleMusicView: UIView {
@@ -53,7 +54,7 @@ final class AppleMusicView: UIView {
     
     private let screen = UIScreen.main.bounds
     public var band = ""
-    public var viewModel = AppleMusicViewModel()
+    private (set) var viewModel = AppleMusicViewModel()
     weak var delegate: AppleMusicViewDelegate?
     
     override init(frame: CGRect) {
@@ -126,5 +127,9 @@ extension AppleMusicView: AppleMusicViewModelDelegate {
     
     func didSelectArtistFrom(_ artistView: String) {
         delegate?.didSelectArtist(from: self, didSelectArtist: artistView)
+    }
+    
+    func didPlaySongWith(_ url: URL) {
+        delegate?.didSelectSong(from: self, didSelectSongFrom: url)
     }
 }
