@@ -10,7 +10,7 @@ import UIKit
 
 protocol AppleMusicViewModelDelegate: AnyObject {
     func didLoadList()
-    //    func didNotLoadList(_ error: NetworkError)
+    func reloadTable()
     func didClearView()
     func didSelectSongFrom(_ url: URL)
     func didPlaySongWith(_ url: URL)
@@ -22,7 +22,11 @@ final class AppleMusicViewModel: NSObject {
     private let service: NetworkProviderProtocol
     public weak var delegate: AppleMusicViewModelDelegate?
     private var bandResponse: Band.Response?
-    private var tracks: [Track] = []
+    private var tracks: [Track]? {
+        didSet {
+            delegate?.reloadTable()
+        }
+    }
     
     init(service: NetworkProviderProtocol = NetworkProvider.shared) {
         self.service = service
@@ -35,16 +39,8 @@ final class AppleMusicViewModel: NSObject {
             switch results {
             case .success(let response):
                 self.bandResponse = response
-                self.tracks = self.bandResponse?.tracks ?? []// else { return }
+                self.tracks = self.bandResponse?.tracks ?? []
 
-//                for position in 0...self.tracks.count - 1 {
-//                    for track in self.tracks {
-//                        if track.trackId == nil || track.trackName == nil || track.trackPrice == nil {
-//                            self.tracks.remove(at: position)
-//                        }
-//                    }
-//                }
-                
                 DispatchQueue.main.async {
                     self.delegate?.didLoadList()
                 }
@@ -76,15 +72,13 @@ extension AppleMusicViewModel: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tracks.count
+        return tracks?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(of: AppleMusicTableViewCell.self, for: indexPath) { [weak self] cell in
-            guard let self = self else { return }
-            
-            let track = self.tracks[indexPath.row]
-            cell.configure(track: track)
+            guard let self = self, let tracks = self.tracks else { return }
+            cell.configure(track: tracks[indexPath.row])
             cell.delegate = self
         }
     }
@@ -96,9 +90,8 @@ extension AppleMusicViewModel: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: " Music") { [weak self] _, _, _ in
             guard let self = self else { return }
-            let track = self.bandResponse?.tracks?.compactMap({ return $0 })
             
-            if let artistView = track?[indexPath.row].artistViewUrl {
+            if let artistView = self.tracks?[indexPath.row].artistViewUrl {
                 DispatchQueue.main.async {
                     self.delegate?.didSelectArtistFrom(artistView)
                 }

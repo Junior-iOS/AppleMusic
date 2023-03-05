@@ -115,6 +115,12 @@ extension AppleMusicView: AppleMusicViewModelDelegate {
         }
     }
     
+    func reloadTable() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     func didClearView() {
         UIView.animate(withDuration: 0.3) {
             self.tableView.alpha = 0

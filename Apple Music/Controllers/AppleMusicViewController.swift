@@ -14,7 +14,7 @@ class AppleMusicViewController: UIViewController {
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.placeholder = "Search your content"
+        searchController.searchBar.placeholder = "Procure por uma banda"
         searchController.searchBar.delegate = self
         return searchController
     }()
@@ -105,13 +105,5 @@ extension AppleMusicViewController: UISearchResultsUpdating, UISearchBarDelegate
         guard let searchBarText = searchBar.text else { return }
         appleMusicView.viewModel.fetchBand(searchBarText)
         searchBar.resignFirstResponder()
-    }
-    
-    func didTapItem() {
-        //        DispatchQueue.main.async { [weak self] in
-        //            let vc = PreviewViewController()
-        //            vc.configure(with: viewModel)
-        //            self?.navigationController?.present(vc, animated: true)
-        //        }
     }
 }
